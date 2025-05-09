@@ -1,3 +1,4 @@
+
 # Use OpenJDK as the base image
 FROM openjdk:17-jdk-slim
 
@@ -7,12 +8,11 @@ WORKDIR /app
 # Copy the application files
 COPY . .
 
-# Grant permission to Gradle wrapper and build files
+# Give permissions to Gradle wrapper
 RUN chmod +x ./gradlew
-RUN chmod +x ./gradlew.bat
 
 # Build the application
-RUN ./gradlew build
+RUN ./gradlew clean build --no-daemon
 
 # Expose the application port
 EXPOSE 8080
