@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "232949884009",
+    "project_id": "paybolo-3dbae",
+    "storage_bucket": "paybolo-3dbae.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:232949884009:android:29c50dfa681d152ccaaef8",
+        "android_client_info": {
+          "package_name": "com.paybolo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_4HSyokgQ17bxszW0niLqlR7-K4EfOOw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

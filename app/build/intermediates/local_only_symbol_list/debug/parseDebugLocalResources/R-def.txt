@@ -1,0 +1,25 @@
+R_DEF: Internal format may change without notice
+local
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id phone_input
+id phone_number_edit_text
+id send_otp_btn
+id send_otp_button
+id splashText
+layout activity_login
+layout activity_main
+layout activity_splash
+layout layout
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+string enter_phone
+string gcm_defaultSenderId
+string google_api_key
+string google_app_id
+string google_crash_reporting_api_key
+string google_storage_bucket
+string project_id
+string send_otp
+xml global_tracker

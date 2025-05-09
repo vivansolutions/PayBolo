@@ -1,0 +1,4 @@
+com.paybolo.test.app-androidTest-0 D:\PayBolo\app\build\generated\res\resValues\androidTest\debug
+com.paybolo.test.app-mergeDebugAndroidTestResources-1 D:\PayBolo\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.paybolo.test.app-mergeDebugAndroidTestResources-2 D:\PayBolo\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.paybolo.test.app-debugAndroidTest-3 D:\PayBolo\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources

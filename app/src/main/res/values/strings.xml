@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PayBolo</string>
+    <string name="enter_phone">Enter Phone Number</string>
+    <string name="send_otp">Send OTP</string>
+</resources>
