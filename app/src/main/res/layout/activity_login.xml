@@ -10,7 +10,7 @@
         android:id="@+id/phone_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/enter_phone"
+        android:hint="@string/enter_phone_number"
         android:text="@string/send_otp"
         android:inputType="phone" />
 

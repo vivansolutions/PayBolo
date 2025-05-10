@@ -5,8 +5,9 @@ buildscript {
         maven { url "https://jitpack.io" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.0.2'
+        classpath 'com.android.tools.build:gradle:8.9.2'
         classpath 'com.google.gms:google-services:4.4.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.22"  // <-- ADD THIS LINE
     }
 }
 
@@ -22,14 +23,12 @@ subprojects {
     afterEvaluate { project ->
         if (project.hasProperty("android")) {
             android {
-                compileSdkVersion 33
-
+                compileSdkVersion 34
                 defaultConfig {
                     minSdkVersion 21
-                    targetSdkVersion 33
+                    targetSdkVersion 34
                     versionCode 1
                     versionName "1.0"
-
                     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
                 }
 
@@ -42,8 +41,4 @@ subprojects {
             }
         }
     }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }
