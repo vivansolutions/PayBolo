@@ -1,20 +1,32 @@
-# Use OpenJDK as the base image
-FROM openjdk:17-jdk-slim
+# Use OpenJDK 11 for Railway deployment
+FROM openjdk:11-jdk-slim
 
-# Set the working directory
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the application files
-COPY . .
+# Copy all files from the current directory to /app inside the container
+COPY . /app
 
-# Grant permission to Gradle wrapper
-RUN chmod +x ./gradlew
+# Install Gradle 8.1.1 (compatible with Java 11)
+RUN apt-get update && \
+    apt-get install -y wget unzip && \
+    wget https://services.gradle.org/distributions/gradle-8.1.1-bin.zip && \
+    unzip gradle-8.1.1-bin.zip && \
+    mv gradle-8.1.1 /opt/gradle && \
+    ln -s /opt/gradle/bin/gradle /usr/bin/gradle
 
-# Update Gradle and build
-RUN ./gradlew clean build --no-daemon --stacktrace
+# Set Gradle Home
+ENV GRADLE_HOME=/opt/gradle
+ENV PATH=$PATH:/opt/gradle/bin
+
+# Verify installations
+RUN gradle -v && java -version
+
+# Build the project
+RUN gradle clean build
 
 # Expose the application port
 EXPOSE 8080
 
-# Run the application
-CMD ["./gradlew", "bootRun"]
+# Set the entry point
+ENTRYPOINT ["gradle", "bootRun"]
