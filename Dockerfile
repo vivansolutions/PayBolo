@@ -22,7 +22,7 @@ RUN mkdir -p /root/.gradle && chmod -R 777 /root/.gradle
 RUN chmod +x ./gradlew
 
 # Build the project
-RUN ./gradlew clean build --no-daemon --stacktrace
+RUN ./gradlew clean build --no-daemon --stacktrace --warning-mode all
 
 # (Optional) Expose port if your app is a server (Not needed for Android build)
 # EXPOSE 8080
