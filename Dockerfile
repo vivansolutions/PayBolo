@@ -29,8 +29,8 @@ RUN gradle clean build
 EXPOSE 8080
 
 # Set the entry point
-<<<<<<< HEAD
+
 ENTRYPOINT ["gradle", "bootRun"]
-=======
+
 ENTRYPOINT ["gradle", "bootRun"]
->>>>>>> c7dbff5 (Added Dockerfile for Railway deployment)
+
