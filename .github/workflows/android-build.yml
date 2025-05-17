@@ -27,7 +27,7 @@ jobs:
         run: ./gradlew clean assembleRelease
 
       - name: Upload APK
-        uses: actions/upload-artifact@v3.1.2
+        uses: actions/upload-artifact@v2
         with:
           name: PayBolo-Release-APK
           path: app/build/outputs/apk/release/app-release.apk
