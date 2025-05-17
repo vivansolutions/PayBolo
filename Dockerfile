@@ -33,6 +33,7 @@ RUN mkdir -p /root/.gradle && chmod -R 777 /root/.gradle
 RUN gradle clean build --no-daemon --stacktrace
 
 # CMD ["java", ".-jar", "app/build/lib/paybolo.jar"]
+#add stacktrace with grandle
 
 
 # Expose the application port
