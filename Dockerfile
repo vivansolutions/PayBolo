@@ -1,43 +1,31 @@
-# Use OpenJDK 11 for Railway deployment
-FROM openjdk:11-jdk-slim
+# Use Java 17 base image
+FROM openjdk:17-jdk-slim
 
-# Set the working directory inside the container
-WORKDIR /app
-
-# Copy all files from the current directory to /app inside the container
-COPY . /app
-
-# Install Gradle 8.1.1 (compatible with Java 11)
-RUN apt-get update && \
-    apt-get install -y wget unzip && \
-    wget https://services.gradle.org/distributions/gradle-8.1.1-bin.zip && \
-    unzip gradle-8.1.1-bin.zip && \
-    mv gradle-8.1.1 /opt/gradle && \
-    ln -s /opt/gradle/bin/gradle /usr/bin/gradle
-
-
-# Set Gradle Home
+# Set environment paths for Gradle (optional but useful)
 ENV GRADLE_HOME=/opt/gradle
 ENV PATH=$PATH:/opt/gradle/bin
 
-# Verify installations
+# Set working directory
+WORKDIR /app
+
+# Copy everything into container
+COPY . .
+
+# Verify Java & Gradle versions
 RUN ./gradlew -v && java -version
 
-# Build the project
-
-# Clear cache + set permissions
+# Clear Gradle cache (optional cleanup)
 RUN rm -rf /root/.gradle/caches/
 RUN mkdir -p /root/.gradle && chmod -R 777 /root/.gradle
 
-# Build safely
+# Make Gradle wrapper executable
+RUN chmod +x ./gradlew
+
+# Build the project
 RUN ./gradlew clean build --no-daemon --stacktrace
 
-# CMD ["java", ".-jar", "app/build/lib/paybolo.jar"]
-#add stacktrace with grandle
+# (Optional) Expose port if your app is a server (Not needed for Android build)
+# EXPOSE 8080
 
-# Expose the application port
-EXPOSE 8080
-
-# Set the entry point
-
-ENTRYPOINT ["gradle", "bootRun"]
+# Default ENTRYPOINT (optional — if your project needs bootRun or jar run)
+# ENTRYPOINT ["./gradlew", "bootRun"]
