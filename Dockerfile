@@ -32,7 +32,7 @@ RUN mkdir -p /root/.gradle && chmod -R 777 /root/.gradle
 # Build safely
 RUN gradle clean build --no-daemon --stacktrace
 
-CMD ["java", ".-jar", "app/build/lib/paybolo.jar"]
+# CMD ["java", ".-jar", "app/build/lib/paybolo.jar"]
 
 
 # Expose the application port
