@@ -15,6 +15,7 @@ RUN apt-get update && \
     mv gradle-8.1.1 /opt/gradle && \
     ln -s /opt/gradle/bin/gradle /usr/bin/gradle
 
+
 # Set Gradle Home
 ENV GRADLE_HOME=/opt/gradle
 ENV PATH=$PATH:/opt/gradle/bin
@@ -23,7 +24,16 @@ ENV PATH=$PATH:/opt/gradle/bin
 RUN gradle -v && java -version
 
 # Build the project
-RUN gradle clean build
+
+# Clear cache + set permissions
+RUN rm -rf /root/.gradle/caches/
+RUN mkdir -p /root/.gradle && chmod -R 777 /root/.gradle
+
+# Build safely
+RUN gradle clean build --no-daemon --stacktrace
+
+CMD ["java", ".-jar", "app/build/lib/paybolo.jar"]
+
 
 # Expose the application port
 EXPOSE 8080
