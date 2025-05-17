@@ -21,7 +21,7 @@ ENV GRADLE_HOME=/opt/gradle
 ENV PATH=$PATH:/opt/gradle/bin
 
 # Verify installations
-RUN gradle -v && java -version
+RUN ./gradlew -v && java -version
 
 # Build the project
 
@@ -30,11 +30,10 @@ RUN rm -rf /root/.gradle/caches/
 RUN mkdir -p /root/.gradle && chmod -R 777 /root/.gradle
 
 # Build safely
-RUN gradle clean build --no-daemon --stacktrace
+RUN ./gradlew clean build --no-daemon --stacktrace
 
 # CMD ["java", ".-jar", "app/build/lib/paybolo.jar"]
 #add stacktrace with grandle
-
 
 # Expose the application port
 EXPOSE 8080
@@ -42,6 +41,3 @@ EXPOSE 8080
 # Set the entry point
 
 ENTRYPOINT ["gradle", "bootRun"]
-
-ENTRYPOINT ["gradle", "bootRun"]
-

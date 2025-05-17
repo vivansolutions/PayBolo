@@ -1,5 +1,14 @@
-/app/build
+# Ignore Gradle cache
+.gradle/
+
+# Ignore build output
+/build/
+/app/build/
+
+# Ignore local config
+local.properties
+
+# Ignore IDE config
+.idea/
+*.iml
 *.log
-*.tmp
-*.class
-.DS_Store
